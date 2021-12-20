@@ -1,0 +1,10 @@
+# SomNetworkCord
+SwordofMagicNetwork傘下のサーバーチャットとDiscodチャットの連動SpigotPlugin
+
+サーバー間チャットはSocketで通信しているのでBungeecord外とのServerともチャット連動可能
+
+Bunggecord下で動いてる場合/hubでLobbyに戻れる(ServerIDがLobbyである必要有)
+
+WebServerも入ってますがClient側が同梱されてないので実質使用不可
+
+チャットのFormatとかはSomNetwork用に作ってるので固定(要望あったらConfigで帰れるようにするかも)
