@@ -1,0 +1,20 @@
+name: SomNetworkCord
+version: 'alpha'
+main: SomNetworkCord.System
+api-version: 1.16
+authors: [ MomiNeko ]
+description: SomNetworkCord
+
+commands:
+  SomNetworkChat:
+    aliases: snc
+    permission: debug.snc
+    description: description
+    usage: /<command>
+  Hub:
+    description: description
+    usage: /<command>
+  ResourcePack:
+    aliases: rp
+    description: description
+    usage: /<command>

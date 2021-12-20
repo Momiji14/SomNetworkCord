@@ -1,0 +1,8 @@
+OperationMode: Client
+ID: SNC
+IP: localhost
+SNC-Port: 25545
+Web-Port: 25546
+DiscordBotToken: ""
+DiscordChatChannel: ""
+ResourcePack: ""
