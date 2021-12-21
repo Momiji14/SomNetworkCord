@@ -165,25 +165,25 @@ public final class System extends JavaPlugin implements Listener, PluginMessageL
 
     public static void Log(String log, String form) {
         Bukkit.getServer().getLogger().info("§b[" + form + "]§r " + log);
-        Iterator var2 = Bukkit.getOnlinePlayers().iterator();
-
-        while(var2.hasNext()) {
-            Player player = (Player)var2.next();
+        for (Player player : Bukkit.getOnlinePlayers()) {
             player.sendMessage("§b[" + form + "]§r " + log);
         }
 
     }
-    
+
     @EventHandler(priority = EventPriority.MONITOR)
     void onChat(AsyncPlayerChatEvent event) {
-        if (!event.isCancelled()) {
+        event.setCancelled(true);
+        String msg = event.getMessage();
+        if (!msg.contains("$cancel")) {
             List<PacketChat> message = new ArrayList<>();
             message.add(new PacketChat("§b[" + ID + "]§r "));
             message.add(new PacketChat(event.getPlayer().getDisplayName()));
             message.add(new PacketChat("§a:§r "));
-            String[] data = event.getMessage().split("$end");
+            String[] data = msg.split("<end>");
             for (String str : data) {
-                String[] split = str.split("$tag");
+                String[] split = str.split("<tag>");
+                Log(Arrays.toString(split) + " -> " + str);
                 message.add(new PacketChat(split));
             }
             String[] Json = new String[16];
@@ -200,8 +200,6 @@ public final class System extends JavaPlugin implements Listener, PluginMessageL
             } else {
                 Log("OperationModeが不正です [Server/Client]");
             }
-
-            event.setCancelled(true);
         }
 
     }

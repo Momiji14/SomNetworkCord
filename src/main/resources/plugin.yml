@@ -1,5 +1,5 @@
 name: SomNetworkCord
-version: 'alpha'
+version: '${project.version}'
 main: SomNetworkCord.System
 api-version: 1.16
 authors: [ MomiNeko ]

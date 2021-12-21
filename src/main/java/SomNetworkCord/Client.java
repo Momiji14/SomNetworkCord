@@ -62,7 +62,6 @@ public class Client implements Listener {
             for (String json : packet.getJson()) {
                 if (json != null) {
                     PacketChat chatPacket = System.gson.fromJson(json, PacketChat.class);
-                    line.append(chatPacket.message);
                     TextComponent text = new TextComponent(chatPacket.message);
                     if (chatPacket.hoverText != null) {
                         text.setHoverEvent(new HoverEvent(Action.SHOW_TEXT, TextComponent.fromLegacyText(chatPacket.hoverText)));
