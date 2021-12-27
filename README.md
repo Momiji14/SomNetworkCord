@@ -7,7 +7,9 @@ Bunggecord下で動いてる場合/hubでLobbyに戻れる(ServerIDがLobbyで�
 
 WebServerも入ってますがClient側が同梱されてないので実質使用不可
 
-チャットのFormatとかはSomNetwork用に作ってるので固定(要望あったらConfigで帰れるようにするかも)
+チャットのFormatとかはSomNetwork用に作ってるので固定
+
+欲しい機能があったら @MomiNeko_ か MomiNeko#7759 にDMくれれば作るかもしれません
 
 **使用方法**
 
