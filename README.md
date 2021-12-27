@@ -9,7 +9,7 @@ WebServerも入ってますがClient側が同梱されてないので実質使�
 
 チャットのFormatとかはSomNetwork用に作ってるので固定(要望あったらConfigで帰れるようにするかも)
 
-**使用方法
+**使用方法**
 
 ・サーバーが1つの場合[1]
   1. Configの"OperationMode"を"Server"にする
