@@ -21,5 +21,5 @@ WebServerも入ってますがClient側が同梱されてないので実質使�
   2. [1]以外のすべてのサーバーの"OperationMode"を"Client"にする
   3. IPに[1]で設定したサーバーのIPを入れる(同PCの場合は"Localhost"でOK)
  
- "ID"はサーバーの識別用IDとChatのPrefixを兼ねてます
- "Port"はサーバー通信で使用するポートです
+"ID"はサーバーの識別用IDとChatのPrefixを兼ねてます
+"Port"はサーバー通信で使用するポートです
