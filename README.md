@@ -13,7 +13,8 @@ WebServerも入ってますがClient側が同梱されてないので実質使�
 
 
 
-"ID"はサーバーの識別用IDとChatのPrefixを兼ねてます。 
+"ID"はサーバーの識別用IDとChatのPrefixを兼ねてます。
+
 "Port"はサーバー間チャットの通信で使用するポートです。
 
 "ResourcePack"にURLを設定できます。/resourcepackまたは/rpでリソースパックがロードされます
