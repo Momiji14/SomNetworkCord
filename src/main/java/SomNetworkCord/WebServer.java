@@ -1,10 +1,8 @@
 package SomNetworkCord;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import org.bukkit.Bukkit;
+
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
@@ -12,7 +10,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.Base64.Encoder;
-import org.bukkit.Bukkit;
 
 public class WebServer {
     private static ServerSocket serverSocket;
@@ -100,7 +97,7 @@ public class WebServer {
             String keyNext = new String(keyBase64);
             byte[] response = ("HTTP/1.1 101 Switching Protocols\r\nConnection: Upgrade\r\nUpgrade: websocket\r\nSec-WebSocket-Accept: " + keyNext + "\r\n\r\n").getBytes(StandardCharsets.UTF_8);
             os.write(response);
-        } catch (NoSuchAlgorithmException | IOException var11) {
+        } catch (NoSuchAlgorithmException | IOException ignored) {
         }
 
     }

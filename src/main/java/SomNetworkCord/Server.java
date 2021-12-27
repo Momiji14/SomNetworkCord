@@ -1,17 +1,14 @@
 package SomNetworkCord;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import org.bukkit.Bukkit;
+
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import org.bukkit.Bukkit;
+import java.util.Map;
 
 import static SomNetworkCord.PacketChat.PacketChatLine;
 
@@ -38,9 +35,12 @@ public class Server {
                             BufferPacket.putIfAbsent(ID, new ArrayList());
                             if (!packet.isCheck()) {
                                 boolean bool = receive(packet);
+                                List<String> Target = packet.getTarget();
                                 if (bool) {
-                                    for (List<Packet> packets : BufferPacket.values()) {
-                                        packets.add(packet);
+                                    for (Map.Entry<String, List<Packet>> packets : BufferPacket.entrySet()) {
+                                        if (Target.contains("All") || Target.contains(packets.getKey())) {
+                                            packets.getValue().add(packet);
+                                        }
                                     }
                                 }
                             }
@@ -55,7 +55,7 @@ public class Server {
                             in.close();
                             socket.close();
                         } catch (ClassNotFoundException | IOException var7) {
-                            System.Log("SNC-Server Input Failed -> " + socket.getInetAddress());
+                            System.Log("SNC-Server Input Failed -> " + socket.getInetAddress() + "/" + socket.getPort());
                         }
 
                     });

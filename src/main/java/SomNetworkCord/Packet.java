@@ -3,6 +3,8 @@ package SomNetworkCord;
 import com.google.gson.Gson;
 
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.List;
 
 enum PacketType {
     CHECK(0),
@@ -22,6 +24,7 @@ enum PacketType {
 public class Packet implements Serializable {
     private final int type;
     private String ID;
+    private List<String> Target = Collections.singletonList("All");
     private String[] Json;
 
     Packet(PacketType type) {
@@ -54,6 +57,14 @@ public class Packet implements Serializable {
     void setID(String ID) {
         this.ID = ID;
     }
+
+    void setTarget(List<String> Target) {
+        this.Target = Target;
+    }
+
+    List<String> getTarget() {
+        return this.Target;
+    }
 }
 
 class PacketChat {
@@ -62,16 +73,16 @@ class PacketChat {
     String runCommand;
 
     PacketChat(String[] message) {
-        if (message.length == 1) {
+        if (message.length >= 1) {
             this.message = message[0];
         }
 
-        if (message.length == 2) {
-            this.message = message[1];
+        if (message.length >= 2) {
+            this.hoverText = message[1];
         }
 
-        if (message.length == 3) {
-            this.message = message[2];
+        if (message.length >= 3) {
+            this.runCommand = message[2];
         }
 
     }

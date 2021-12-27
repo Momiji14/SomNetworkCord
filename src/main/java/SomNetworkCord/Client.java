@@ -1,21 +1,21 @@
 package SomNetworkCord;
 
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.HoverEvent.Action;
+import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.chat.ComponentSerializer;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.Arrays;
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
-
-import com.google.gson.Gson;
-import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.HoverEvent;
-import net.md_5.bungee.api.chat.TextComponent;
-import net.md_5.bungee.api.chat.HoverEvent.Action;
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
 
 import static SomNetworkCord.PacketChat.PacketChatLine;
 import static SomNetworkCord.System.Log;
@@ -49,7 +49,7 @@ public class Client implements Listener {
                 out.close();
                 socket.close();
             } catch (ClassNotFoundException | IOException e) {
-                Log("sendSNC fatal");
+                Log("Connect SNC fatal");
             }
 
         });
@@ -63,21 +63,30 @@ public class Client implements Listener {
                 if (json != null) {
                     PacketChat chatPacket = System.gson.fromJson(json, PacketChat.class);
                     TextComponent text = new TextComponent(chatPacket.message);
+                    line.append(chatPacket.message);
                     if (chatPacket.hoverText != null) {
-                        text.setHoverEvent(new HoverEvent(Action.SHOW_TEXT, TextComponent.fromLegacyText(chatPacket.hoverText)));
+                        List<TextComponent> components = new ArrayList<>();
+                        String[] str = chatPacket.hoverText.split("<nl>");
+                        TextComponent hoverText = new TextComponent();
+                        TextComponent newLine = new TextComponent(ComponentSerializer.parse("{text: \"\n\"}"));
+                        for (int i  = 0; i < str.length; i++) {
+                            hoverText.addExtra(new TextComponent(str[i]));
+                            if (i < str.length-1)
+                            hoverText.addExtra(newLine);
+                        }
+                        components.add(hoverText);
+                        text.setHoverEvent(new HoverEvent(Action.SHOW_TEXT, components.toArray(new BaseComponent[components.size()])));
                     }
-
                     if (chatPacket.runCommand != null) {
                         text.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, chatPacket.runCommand));
                     }
-
                     message.addExtra(text);
                 }
             }
 
             Bukkit.getLogger().info(line.toString());
             for (Player player : Bukkit.getOnlinePlayers()) {
-                player.sendMessage(message);
+                player.spigot().sendMessage(message);
             }
         }
 

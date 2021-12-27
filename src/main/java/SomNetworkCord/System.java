@@ -2,12 +2,6 @@ package SomNetworkCord;
 
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-
 import com.google.gson.Gson;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -21,6 +15,10 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static SomNetworkCord.PacketChat.PacketChatLine;
 
@@ -97,6 +95,10 @@ public final class System extends JavaPlugin implements Listener, PluginMessageL
             if (args[0].equalsIgnoreCase("sendSNC")) {
                 if (args.length >= 2) {
                     Packet packet = new Packet(PacketType.CHAT, PacketChatLine(args[1]));
+                    if (args.length >= 3) {
+                        String[] split = args[2].split(",");
+                        packet.setTarget(Arrays.asList(split));
+                    }
                     if (OperationMode.equalsIgnoreCase("Client")) {
                         Client.sendSNC(packet);
                     } else if (OperationMode.equalsIgnoreCase("Server")) {
@@ -183,8 +185,8 @@ public final class System extends JavaPlugin implements Listener, PluginMessageL
             String[] data = msg.split("<end>");
             for (String str : data) {
                 String[] split = str.split("<tag>");
-                Log(Arrays.toString(split) + " -> " + str);
-                message.add(new PacketChat(split));
+                PacketChat packetChat = new PacketChat(split);
+                message.add(packetChat);
             }
             String[] Json = new String[16];
             int i = 0;
@@ -201,6 +203,5 @@ public final class System extends JavaPlugin implements Listener, PluginMessageL
                 Log("OperationModeが不正です [Server/Client]");
             }
         }
-
     }
 }

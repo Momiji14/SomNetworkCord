@@ -1,4 +1,4 @@
-OperationMode: Client
+OperationMode: Server
 ID: SNC
 IP: localhost
 SNC-Port: 25545
