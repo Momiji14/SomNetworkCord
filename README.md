@@ -12,14 +12,14 @@ WebServerも入ってますがClient側が同梱されてないので実質使�
 **使用方法**
 
 ・サーバーが1つの場合[1]
-  1. Configの"OperationMode"を"Server"にする。
-  2. "DiscordBotToken"にDiscordBotのTokenを入れる。
-  3. "DiscordChatChannel"に連動させたいテキストチャンネ。ルのIDを入れる。
+  1. Configの[OperationMode]を[Server]にする。
+  2. [DiscordBotToken]にDiscordBotのTokenを入れる。
+  3. [DiscordChatChannel]に連動させたいテキストチャンネ。ルのIDを入れる。
  
 ・サーバーが2つ以上の場合[2]
   1. いずれかのサーバーで[1]の内容を設定する。
-  2. [1]以外のすべてのサーバーの"OperationMode"を"Client"にする。
-  3. IPに[1]で設定したサーバーのIPを入れる。(同PCの場合は"Localhost"でOK)
+  2. [1]以外のすべてのサーバーの[OperationMode]を[Client]にする。
+  3. IPに[1]で設定したサーバーのIPを入れる。(同PCの場合は[Localhost]でOK)
  
-"ID"はサーバーの識別用IDとChatのPrefixを兼ねてます。
-"Port"はサーバー通信で使用するポートです。
+[ID]はサーバーの識別用IDとChatのPrefixを兼ねてます。
+[Port]はサーバー通信で使用するポートです。
