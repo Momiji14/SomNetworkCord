@@ -24,8 +24,9 @@ public class Client implements Listener {
     public Client() {
     }
 
+    static boolean connect;
+
     static void start() {
-        sendSNC(new Packet(PacketType.CHAT, PacketChatLine("§b[" + System.ID + "]§r Connected SNC")));
         Bukkit.getScheduler().runTaskTimerAsynchronously(System.plugin, () -> {
             sendSNC(new Packet(PacketType.CHECK));
         }, 1L, 10L);
@@ -48,8 +49,16 @@ public class Client implements Listener {
                 in.close();
                 out.close();
                 socket.close();
+
+                if (packet.isCheck() && !connect) {
+                    connect = true;
+                    sendSNC(new Packet(PacketType.CHAT, PacketChatLine("§b[" + System.ID + "]§r Connected SNC")));
+                }
             } catch (ClassNotFoundException | IOException e) {
-                Log("Connect SNC fatal");
+                if (packet.isCheck() && connect) {
+                    connect = false;
+                    Log("Disconnected SNC");
+                }
             }
 
         });

@@ -72,19 +72,21 @@ public class Server {
                 packets.add(packet);
             }
         }
-
+        Client.receive(packet);
     }
 
     static boolean receive(Packet packet) {
         if (packet.getType() == PacketType.CHAT.getID()) {
             Client.receive(packet);
             StringBuilder line = new StringBuilder();
-            for (String json : packet.getJson()) {
-                if (json != null) {
-                    PacketChat chatPacket = System.gson.fromJson(json, PacketChat.class);
-                    line.append(chatPacket.message);
+            try {
+                for (String json : packet.getJson()) {
+                    if (json != null) {
+                        PacketChat chatPacket = System.gson.fromJson(json, PacketChat.class);
+                        line.append(chatPacket.message);
+                    }
                 }
-            }
+            } catch (Exception ignored) {}
             if (DiscordBot.isEnabled()) {
                 DiscordBot.send("**" + Function.unColored(line.toString()) + "**");
             }
