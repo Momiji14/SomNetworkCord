@@ -11,10 +11,15 @@ WebServerも入ってますがClient側が同梱されてないので実質使�
 
 欲しい機能があったら @MomiNeko_ か MomiNeko#7759 にDMくれれば作るかもしれません
 
-**使用方法**
+
 
 "ID"はサーバーの識別用IDとChatのPrefixを兼ねてます。
+
 "Port"はサーバー間チャットの通信で使用するポートです。
+
+"ResourcePack"にURLを設定できます。/resourcepackまたは/rpでリソースパックがロードされます
+
+**使用方法**
 
 ・サーバーが1つの場合[1]
   1. Configの"OperationMode"を"Server"にする。
