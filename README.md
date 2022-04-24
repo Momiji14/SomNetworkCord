@@ -19,6 +19,9 @@ WebServerも入ってますがClient側が同梱されてないので実質使�
 
 "ResourcePack"にURLを設定できます。/resourcepackまたは/rpでリソースパックがロードされます
 
+v2から汎用のString通信として使えるようになりました。
+Server側はSom7専用機能以外はほぼルーターです
+
 **使用方法 v1**
 
 ・サーバーが1つの場合[1]
