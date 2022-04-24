@@ -19,7 +19,7 @@ WebServerも入ってますがClient側が同梱されてないので実質使�
 
 "ResourcePack"にURLを設定できます。/resourcepackまたは/rpでリソースパックがロードされます
 
-**使用方法**
+**使用方法 v1**
 
 ・サーバーが1つの場合[1]
   1. Configの"OperationMode"を"Server"にする。
@@ -30,3 +30,10 @@ WebServerも入ってますがClient側が同梱されてないので実質使�
   1. いずれかのサーバーで[1]の内容を設定する。
   2. [1]以外のすべてのサーバーの"OperationMode"を"Client"にする。
   3. "IP"に[1]で設定したサーバーのIPを入れる。(同PCの場合は"Localhost"でOK)
+
+**使用方法 v2**
+・SNC-Serverを起動する
+・SomNetworkCord-Clientの鯖を起動する
+・localhostならこれで終わり、外部ならconfig.ymlからHostを設定してください
+・operationModeをNonChatにするとチャットシステムを無効化出来ます
+・詳しいことは 猫宮紅葉 まで
