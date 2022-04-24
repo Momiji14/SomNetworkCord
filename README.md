@@ -32,8 +32,8 @@ WebServerも入ってますがClient側が同梱されてないので実質使�
   3. "IP"に[1]で設定したサーバーのIPを入れる。(同PCの場合は"Localhost"でOK)
 
 **使用方法 v2**
-・SNC-Serverを起動する
-・SomNetworkCord-Clientの鯖を起動する
-・localhostならこれで終わり、外部ならconfig.ymlからHostを設定してください
-・operationModeをNonChatにするとチャットシステムを無効化出来ます
-・詳しいことは 猫宮紅葉 まで
+  1. SNC-Serverを起動する
+  2. SomNetworkCord-Clientの鯖を起動する
+  3. localhostならこれで終わり、外部ならconfig.ymlからHostを設定してください
+  4. operationModeをNonChatにするとチャットシステムを無効化出来ます
+  詳しいことは 猫宮紅葉 まで
