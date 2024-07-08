@@ -1,7 +1,7 @@
 # SomNetworkCord
 SwordofMagicNetwork傘下のサーバーチャットとDiscodチャットの連動SpigotPlugin
 
-サーバー間チャットはSocketで通信しているのでBungeecord外とのServerともチャット連動可能
+サーバー間チャットはSocketで通信しているのでBungeecord外のServerともチャット連動可能
 
 Bunggecord下で動いてる場合/hubでLobbyに戻れる(ServerIDがLobbyである必要有)
 
@@ -31,11 +31,11 @@ v2からString型ルーターとして使えるようになりました。API？
 ・サーバーが2つ以上の場合[2]
   1. いずれかのサーバーで[1]の内容を設定する。
   2. [1]以外のすべてのサーバーの"OperationMode"を"Client"にする。
-  3. "IP"に[1]で設定したサーバーのIPを入れる。(同PCの場合は"Localhost"でOK)
+  3. "IP"に[1]で設定したサーバーのIPを入れる。(同PCの場合は"localhost"でOK)
 
 **使用方法 v2**
   1. SNC-Serverを起動する
-  2. SomNetworkCord-Clientの鯖を起動する
+  2. SomNetworkCord-Clientのサーバーを起動する
   3. localhostならこれで終わり、外部ならconfig.ymlからHostを設定してください
   4. operationModeをNonChatにするとチャットシステムを無効化出来ます
   詳しいことは 猫宮紅葉 まで
