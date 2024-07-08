@@ -26,7 +26,7 @@ v2からString型ルーターとして使えるようになりました。API？
 ・サーバーが1つの場合[1]
   1. Configの"OperationMode"を"Server"にする。
   2. "DiscordBotToken"にDiscordBotのTokenを入れる。
-  3. "DiscordChatChannel"に連動させたいテキストチャンネ。ルのIDを入れる。
+  3. "DiscordChatChannel"に連動させたいテキストチャンネルのIDを入れる。
  
 ・サーバーが2つ以上の場合[2]
   1. いずれかのサーバーで[1]の内容を設定する。
